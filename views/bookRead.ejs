@@ -1,0 +1,73 @@
+<section>
+    <a href="#" class="image"><img src="images/pic1.jpg" alt="" data-position="top center" style="opacity: 0.2" /></a>
+    <div class="content">
+        <div class="inner">
+            <h2>Livres lus</h2>
+            <p>Ma liste de livres lus</p>
+            <div class="table-wrapper">
+                <table class="alt" id="tabReaded">
+                    <thead id="thead">
+                    <tr>
+                        <th>Nom du livre</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                    </tr>
+                    </thead>
+                        <div id="tbody">
+                            <tbody id="champ">
+                            </tbody>
+                        </div>
+
+                    <tfoot>
+                    <tr id="form">
+                        <td><input type="text" id="bookAddName" placeholder="Ajouter le titre" ></td>
+                        <td><input type="text" id="bookAddResume" placeholder="Ajouter la description"></td>
+                        <td><input type="text" id="bookAddPrice" placeholder="Ajouter le prix"></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <ul class="actions">
+                <li><a onclick="addRow(document.getElementById('champ'),document.getElementById('bookAddName').value,document.getElementById('bookAddResume').value,document.getElementById('bookAddPrice').value)" class="button" id="add">Ajout d'un livre</a></li>
+            <li><a onclick="deleteAll()" class="button">Tout Supprimer</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+
+        function deleteAll() {
+            let parent = document.getElementById('champ');
+            parent.remove();
+
+            let tbody = document.createElement('tbody');
+            tbody.setAttribute("id", "champ");
+            let thead = document.getElementById('thead');
+
+            let table = document.getElementById('tabReaded');
+            table.insertBefore(tbody,thead);
+        }
+
+        function addRow(el,value,value2,value3) {
+
+
+            let tr = document.createElement('tr');
+            el.appendChild(tr);
+
+            let td1 = document.createElement('td');
+            tr.appendChild(td1);
+            let td2 = document.createElement('td');
+            tr.appendChild(td2);
+            let td3 = document.createElement('td');
+            tr.appendChild(td3);
+
+            let tdText1 = document.createTextNode(value);
+            td1.appendChild(tdText1);
+            let tdText2 = document.createTextNode(value2);
+            td2.appendChild(tdText2);
+
+
+        }
+
+    </script>
+</section>

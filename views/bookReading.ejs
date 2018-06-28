@@ -1,0 +1,67 @@
+<section>
+    <a href="#" class="image"><img src="images/pic2.jpg" style="opacity:0.3;" alt="" data-position="25% 25%" /></a>
+    <div class="content">
+        <div class="inner">
+            <h2>Livres en cours de lecture</h2>
+            <p>Ici ma liste de livres que je lis</p>
+            <div class="table-wrapper">
+                <table class="alt" id="tabEnCours">
+                    <thead id="headEnCours">
+                    <tr>
+                        <th>Nom du livre</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                    </tr>
+                    </thead>
+                    <div>
+                    <tbody id="livreLu">
+                    </tbody>
+                    </div>
+                    <tfoot>
+                    <tr id="form">
+                        <td><input type="text" id="nameLu" placeholder="Ajouter le titre" ></td>
+                        <td><input type="text" id="resumeLu" placeholder="Ajouter la description"></td>
+                        <td><input type="text" id="priceLu" placeholder="Ajouter le prix"></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <ul class="actions">
+                <li><a onclick="addRowLu(document.getElementById('livreLu'),document.getElementById('nameLu').value,document.getElementById('resumeLu').value,document.getElementById('priceLu').value)" class="button" id="add">Ajout d'un livre</a></li>
+                <li><a onclick="deleteAllReading()" class="button">Tout Supprimer</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function deleteAllReading() {
+            let parent = document.getElementById('livreLu');
+            parent.remove();
+
+            let tbody = document.createElement('tbody');
+            tbody.setAttribute("id", "livreLu");
+            let thead = document.getElementById('hendEnCours');
+
+            let table = document.getElementById('tabEnCours');
+            table.insertBefore(tbody,thead);
+        }
+        function addRowLu(el,nom,descr,prix) {
+            let tr = document.createElement('tr');
+            el.appendChild(tr);
+
+            let td1 = document.createElement('td');
+            tr.appendChild(td1);
+            let td2 = document.createElement('td');
+            tr.appendChild(td2);
+            let td3 = document.createElement('td');
+            tr.appendChild(td3);
+
+            let tdText1 = document.createTextNode(nom);
+            td1.appendChild(tdText1);
+            let tdText2 = document.createTextNode(descr);
+            td2.appendChild(tdText2);
+            let tdText3 = document.createTextNode(prix);
+            td3.appendChild(tdText3);
+        }
+
+    </script>
+</section>

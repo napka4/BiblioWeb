@@ -1,0 +1,69 @@
+<section>
+    <a href="#" class="image"><img src="images/pic3.jpg" alt="" data-position="25% 25%" style="opacity: 0.2;"/></a>
+    <div class="content">
+        <div class="inner">
+            <h2>Livres que je veux</h2>
+            <p>Ici ma liste de livres que j'aimerais avoir</p>
+            <div class="table-wrapper">
+                <table class="alt" id="tabWanted">
+                    <thead id="headWanted">
+                    <tr>
+                        <th>Nom du livre</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                    </tr>
+                    </thead>
+                    <div id="bodyTable">
+                    <tbody id="wanted">
+
+                    </tbody>
+                    </div>
+                    <tr id="wantedForm">
+                        <td><input type="text" id="wantedName" placeholder="Ajouter le titre" ></td>
+                        <td><input type="text" id="wantedResume" placeholder="Ajouter la description"></td>
+                        <td><input type="text" id="wantedPrice" placeholder="Ajouter le prix"></td>
+                    </tr>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+            <ul class="actions">
+                <li><a onclick="addRow(document.getElementById('wanted'),document.getElementById('wantedName').value,document.getElementById('wantedResume').value,document.getElementById('wantedPrice').value)" class="button" id="add">Ajout d'un livre</a></li>
+                <li><a onclick="deleteAllWanted()" class="button">Tout Supprimer</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function deleteAllWanted() {
+            let parent = document.getElementById('wanted');
+            parent.remove();
+
+            let tbody = document.createElement('bodyTable');
+            tbody.setAttribute("id", "wanted");
+            let thead = document.getElementById('headWanted');
+
+            let table = document.getElementById('tabWanted');
+            table.insertBefore(tbody,thead);
+        }
+        function addRow(el,name,resume,price) {
+            let tr = document.createElement('tr');
+            el.appendChild(tr);
+
+            let td1 = document.createElement('td');
+            tr.appendChild(td1);
+            let td2 = document.createElement('td');
+            tr.appendChild(td2);
+            let td3 = document.createElement('td');
+            tr.appendChild(td3);
+
+            let tdText1 = document.createTextNode(name);
+            td1.appendChild(tdText1);
+            let tdText2 = document.createTextNode(resume);
+            td2.appendChild(tdText2);
+            let tdText3 = document.createTextNode(price);
+            td3.appendChild(tdText3);
+        }
+
+    </script>
+</section>
